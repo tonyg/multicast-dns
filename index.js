@@ -104,7 +104,7 @@ module.exports = function (opts) {
     if (typeof rinfo === 'function') return that.query(q, type, null, rinfo)
     if (!cb) cb = noop
 
-    if (typeof q === 'string') q = [{name: q, type: type || 'ANY'}]
+    if (typeof q === 'string' || q instanceof packet.DNSName) q = [{name: q, type: type || 'ANY'}]
     if (Array.isArray(q)) q = {type: 'query', questions: q}
 
     q.type = 'query'
